@@ -1,13 +1,12 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
+var finishedPassword = [];
 // Write password to the #password input
-function writePassword() 
-{
-  var password = generatePassword();
-  var finishedPassword = document.querySelector("#password");
+function writePassword() {
+  var password = finishedPassword;
+  var passwordText = document.querySelector("#password");
 
-  finishedPassword = password;
+  passwordText.value = password;
 
 }
 
@@ -24,10 +23,11 @@ var nums = ["0","1","2","3","4","5","6","7","8","9"];
 var specialCha = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", 
 ")", "-", "_", "=", "+", "[", "{", "]", "}", "|", ";", ":", "'",
 ",", "<", ".", ">", "/", "?"];
-var finishedPassword;
-var applicable = [];
 
-if(generateBtn.addEventListener("click", function generatePasswords()
+var applicable = [];
+var fP = "";
+
+if(generateBtn.addEventListener("click", function generatePassword()
 {
   var numberOfChar = window.prompt("How many characters would you like your password to be?");
   console.log(numberOfChar);
@@ -56,32 +56,23 @@ if(generateBtn.addEventListener("click", function generatePasswords()
   if(yesNums)
     applicable = applicable.concat(nums);
 
+
   for(i = 0; i < numberOfChar; i++)
   {
-    finishedPassword = applicable[Math.floor(Math.random()*applicable.length)];
-    return finishedPassword;
+    finishedPassword = finishedPassword.concat(applicable[Math.floor(Math.random()*applicable.length)]);
   }
-  console.log(finishedPassword);
-
+  
+  for(var i = 0; i < numberOfChar; i++)
+  {
+    fP += finishedPassword[i];
+  }
+  
+  console.log(fP);
+  writePassword();
+  return finishedPassword;
 }))
-
 
 function generatePassword()
 {
-  
-// var numChar = window.prompt;
-// var includesomething = window.confirm; true/false
-
-// var numArray["0","1","2","3","4","5","6","7","8","9"];
-// array for each char type
-
-// if statement
-  // if true push/concat the true array into a new array
-
-  // for loop on numChar window.prompt
-  // random index value for every loop
-  // How to randomly choose a value from an array
-  // var chosenArr- [];
-  // turn array into string, new string name is called password
   return password;
 }
